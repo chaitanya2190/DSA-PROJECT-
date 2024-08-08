@@ -1,51 +1,48 @@
 #include <stdio.h>
-#include <string.h>
-
-// Define the structure Type which will be nested in the Friend structure
-struct Type {
-    char type[20]; // Type of friend (School, College or Area friend)
-    char common_friends[50]; // Name of common friends
-    int places_visited; // Number of places visited together
-};
-
-// Define the structure Friends
 struct Friends {
-    char name[50]; // Friend's name
-    char pet_name[20]; // Pet name
-    char phone_number[20]; // Phone number
-    struct Type type; // Nested structure Type
+    char name[50];
+    char pet_name[50];
+    double phone_number;
+    struct type{
+        char type_of_friends[50];
+        char name_of_friends[50];
+        int place_visited;
+    } t;
 };
-
-int main() {
-    int num_friends;
-    printf("Enter the number of friends to add: ");
-    scanf("%d", &num_friends);
-
-    struct Friends friends[num_friends];
-
-    // Input friend data
-    for (int i = 0; i < num_friends; i++) {
-        printf("Enter Friend Name: ");
-        scanf("%s", friends[i].name);
-        printf("Enter Pet Name: ");
-        scanf("%s", friends[i].pet_name);
-        printf("Enter Phone Number: ");
-        scanf("%s", friends[i].phone_number);
-        printf("Enter Type of friend: ");
-        scanf("%s", friends[i].type.type);
-        printf("Enter Name of Common Friends: ");
-        scanf("%s", friends[i].type.common_friends);
-        printf("Enter No. of Places Visited Together: ");
-        scanf("%d", &friends[i].type.places_visited);
-        printf("\n");
+int main()
+{
+    int i,n;
+    printf("ENTER THE NUMBER OF FRIENDS TO ADD:");
+    scanf("%d",&n);
+    struct Friends f[n];
+    for(i=0;i<n;i++){
+        printf("ENTER FRIEND NAME: ");
+        scanf("%s",&f[i].name);
+        printf("ENTER PET NAME: ");
+        scanf("%s",&f[i].pet_name);
+        printf("ENTER PHONE NUMBER: ");
+        scanf("%lf", &f[i].phone_number);
+        printf("ENTER TYPE OF FRIENDS: ");
+        scanf("%s",&f[i].t.type_of_friends);
+        printf("ENTER NAME OF COMMON FRIENDS: ");
+        scanf("%s",&f[i].t.name_of_friends);
+        printf("ENTER NUMBER OF PLACE VISITED TOGETHER: ");
+        scanf("%d",&f[i].t.place_visited);
     }
-
-    // Display friend data
-    printf("\nFriends List:\n");
-    printf("S.No.\tName\t\tPet Name\tPhone Number\tType of Friend\tName of common friends\tNo. of places visited together\n");
-    for (int i = 0; i < num_friends; i++) {
-        printf("%d\t%s\t\t%s\t\t%s\t\t%s\t\t%s\t\t%d\n", i + 1, friends[i].name, friends[i].pet_name, friends[i].phone_number, friends[i].type.type, friends[i].type.common_friends, friends[i].type.places_visited);
+    printf("S.NO.  \t");
+    printf("FRIENDS LIST NAME \t");
+    printf("PET NAME \t");
+    printf("PHONE NUMBER  \t");
+    printf("TYPE OF FRIENDS \t");
+    printf("NAME OF COMMON FRIENDS \t");
+    printf("NUMBER OF PLACES VISITED TOGETHER  \t\n");
+    for(i=0;i<n;i++){
+        printf("%d \t",i+1);
+        printf("%S \t",f[i].name);
+        printf("%s \t",f[i].pet_name);
+        printf("%lf \t",f[i].phone_number);
+        printf("%s \t",f[i].t.type_of_friends);
+        printf("%s \t",f[i].t.name_of_friends);
+        printf("%d \t\n",f[i].t.place_visited);
     }
-
-    return 0;
 }
